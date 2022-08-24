@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>
+            <%=locals.title%>
+        </title>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <!-- our css should be bwlow all other styles so that we can override it -->
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+
+        <h1 id="page-heading">
+            <i class="fa-solid fa-book-open-reader"></i>
+            My Contact List
+        </h1>
+        <div class="show">
+        <p id="title1">NAME</p>
+        <p id="title2">PHONE &nbsp;NUMBER</p>
+        </div>
+
+        <div>
+            <ul id="ul-item">
+                <% for (let i of contact_list ) { %>
+                    <li id="list-item">  
+                        <p class="name"><%= i.name %> </p>
+                        <p class="phone"><%= i.phone %></p>
+
+                        <div class="delete-button">
+                        <a href="/delete-contact/?id=<%= i.id %>">
+                            <i class="fa-solid fa-circle-xmark"></i>
+                        </a>
+                        </div>
+                    </li>
+                    
+                        
+                    
+                <% } %>
+            </ul>
+
+        </div>
+
+
+        <form id="form-data" action="/create-contact" method="post">
+            <input type="text" name="name" placeholder="Enter Name" required>
+            <input type="text" name="phone" placeholder="Enter Phone Number" required>
+            <button type="submit"><p>Add Contact</p></button>
+        </form>
+
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
